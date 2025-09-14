@@ -16,6 +16,10 @@ client = MongoClient(DATABASE_URI)
 db = client[DATABASE_NAME]
 collection = db[COLLECTION_NAME]
 
+@app.route("/")
+def home():
+    return jsonify({"status": "ok", "message": "MongoDB API is running 🚀"})
+    
 @app.route("/files", methods=["GET"])
 def get_files():
     q = request.args.get("q", "")
